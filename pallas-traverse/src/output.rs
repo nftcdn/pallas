@@ -101,11 +101,11 @@ impl<'b> MultiEraOutput<'b> {
         }
     }
 
-    pub fn encode(&self) -> Result<Vec<u8>, minicbor::encode::Error<std::io::Error>> {
+    pub fn encode(&self) -> Vec<u8> {
         match self {
-            Self::AlonzoCompatible(x) => minicbor::to_vec(x),
-            Self::Babbage(x) => minicbor::to_vec(x),
-            Self::Byron(x) => minicbor::to_vec(x),
+            Self::AlonzoCompatible(x) => minicbor::to_vec(x).unwrap(),
+            Self::Babbage(x) => minicbor::to_vec(x).unwrap(),
+            Self::Byron(x) => minicbor::to_vec(x).unwrap(),
         }
     }
 
